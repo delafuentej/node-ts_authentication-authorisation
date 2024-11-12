@@ -1,6 +1,6 @@
 import { AuthService } from "../services/auth.service";
 // AuthController => is responsible for responding to the client
-import { CustomError } from "../../domain";
+import { CustomError, LoginUserDto } from "../../domain";
 import { Request, Response } from "express"
 import { RegisterUserDto } from "../../domain";
 
@@ -33,7 +33,13 @@ export class AuthController {
     }
 
     login = (req: Request, res: Response) => {
-        res.json('loginUser');
+       const[ error, loginUserDto] = LoginUserDto.create(req.body);
+
+       if(error) return res.status(400).json({error});
+
+       this.authService.loginUser(loginUserDto!)
+       .then( (user) => res.json(user))
+       .catch( error => this.handleError(res, error))
     }
 
     validateEmail = (req: Request, res: Response) =>{
