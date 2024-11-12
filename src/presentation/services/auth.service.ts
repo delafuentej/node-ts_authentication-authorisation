@@ -3,6 +3,7 @@ import { UserModel } from '../../data';
 import { CustomError, LoginUserDto, UserEntity } from '../../domain';
 import { RegisterUserDto } from '../../domain/dtos/auth/register-user.dto';
 import { bcryptAdapter } from '../../config/bcrypt.adapter';
+import { Jwt } from '../../config/jwt.adapter';
 
 
 export class AuthService{
@@ -66,10 +67,14 @@ export class AuthService{
         // return object {user, token}
         const {password, ...restUserEntity} = UserEntity.fromObject(user);
 
+        //token -jwt
+        const token = await Jwt.generateToken({ id: user.id, email: user.email })
+
+        if(!token) throw CustomError.internalServer('Error while creating JWT-Token');
 
         return {
             user: restUserEntity,
-            token: 'ABC',
+            token: token,
         }
 
 
