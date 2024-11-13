@@ -49,7 +49,7 @@ export class EmailService {
                 html: htmlBody,
                 attachments: attachments,
             });
-         console.log(sendInfo)
+         //console.log(sendInfo)
             
             return true;
         }catch(error){
