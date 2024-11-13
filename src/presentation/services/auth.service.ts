@@ -4,12 +4,16 @@ import { CustomError, LoginUserDto, UserEntity } from '../../domain';
 import { RegisterUserDto } from '../../domain/dtos/auth/register-user.dto';
 import { bcryptAdapter } from '../../config/bcrypt.adapter';
 import { Jwt } from '../../config/jwt.adapter';
+import { EmailService } from './email.service';
+import { envs } from '../../config/envs';
 
 
 export class AuthService{
 
-    //Dependencies Injection (DI)
+   
     constructor(
+    //Dependencies Injection (DI)-Email Service
+    private readonly emailService: EmailService,
         
     ){}
 
@@ -26,11 +30,9 @@ export class AuthService{
 
             // to save the user in db
             await user.save();
-
-
-
     
             // send confirmation email when user is created
+            await this.sendEmailValidationLink(user.email)
 
             //const userEntity = UserEntity.fromObject(user);
             const {password, ...restUserEntity} = UserEntity.fromObject(user)
@@ -43,9 +45,6 @@ export class AuthService{
             if(!token) throw CustomError.internalServer('Error while creating JWT-Token');
     
            
-           
-           
-
 
             return {
                 user: restUserEntity,
@@ -84,6 +83,33 @@ export class AuthService{
             token: token,
         }
 
+
+    }
+
+    private sendEmailValidationLink = async(email: string) => {
+        //1. Generate a token
+        const token =  await Jwt.generateToken({ email});
+        if(!token) throw CustomError.internalServer('Error getting token');
+        // 2. Create a link
+        const link = `${envs.WEBSERVICE_URL}/auth/validate-email/${token}`;
+        // 3. Create a html file
+        const html = `
+            <h1>Validate your email</h1>
+            <p>Please click on the following link to validate your email</p>
+            <a href="${link}">Validate your email: ${email}</a>
+        `;
+        // 4. Options for sendEmail method
+        const options = {
+            to: email,
+            subject:'Validate your email',
+            htmlBody: html,
+        };
+
+        const isSent = await this.emailService.sendEmail(options);
+
+        if(!isSent) throw CustomError.internalServer('Error sending validate email');
+
+        return true;
 
     }
 
