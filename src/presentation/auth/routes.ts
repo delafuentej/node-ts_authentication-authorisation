@@ -23,7 +23,7 @@ export class AuthRoutes {
         const authService = new AuthService(emailService);
         const authController = new AuthController(authService);
         
-        // Definir las rutas
+        // Defining the routes
         router.post('/login', authController.login );
         router.post('/register', authController.register);
         router.get('/validate-email/:token', authController.validateEmail );
