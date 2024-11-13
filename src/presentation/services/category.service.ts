@@ -35,7 +35,6 @@ export class CategoryService {
 
     async getCategories(){
 
-
         try{
             const categories = await CategoryModel.find();
 
