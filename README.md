@@ -9,6 +9,6 @@ Each configuration step has already been completed in the course, so you only ne
 
 1. Clone .env.template to .env and set up the environment variables.
 2. Run ```npm install``` to install dependencies.
-3. If a database is needed, configure docker-compose.yml and run ```docker-compose up -d``` to start the desired services.
+3. If a database is needed, configure docker-compose.yml and run ```docker compose up -d``` to start the desired services.
 4. Run ```npm run dev``` to launch the project in development mode.
 

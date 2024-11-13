@@ -1,6 +1,6 @@
 import { CustomError } from "../errors/custom.error";
 
-
+  
 export class UserEntity {
     constructor(
         public id: string,

@@ -13,6 +13,8 @@ export const envs = {
 
   JWT_SEED: get('JWT_SEED').required().asString(),
 
+  SEND_EMAIL: get('SEND_EMAIL').default('false').asBool(),
+
   MAILER_HOST: get('MAILER_HOST').required().asString(),
   MAILER_SERVICE: get('MAILER_SERVICE').required().asString(),
   MAILER_EMAIL: get('MAILER_EMAIL').required().asString(),
