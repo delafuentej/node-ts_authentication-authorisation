@@ -28,11 +28,11 @@ export class CategoryController {
         const [error, paginationDto] = PaginationDto.create(Number(page), Number(limit));
         if(error) return res.status(400).json({error});
 
-        res.json(paginationDto)
+        //res.json(paginationDto)
 
-    //    this.categoryService.getCategories()
-    //    .then( categories => res.status(200).json(categories)) 
-    //    .catch( error => this.handleError(res, error))
+       this.categoryService.getCategories(paginationDto!)
+       .then( categories => res.status(200).json(categories)) 
+       .catch( error => this.handleError(res, error))
     }
 
     createCategory = (req: Request, res: Response) => {
