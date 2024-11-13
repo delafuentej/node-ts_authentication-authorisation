@@ -9,3 +9,5 @@ export * from './errors/custom.error';
     export * from './dtos/auth/login-user.dto';
     //-category;
     export * from './dtos/category/create-category.dto';
+    //-pagination:
+    export * from './dtos/shared/pagination.dto';
