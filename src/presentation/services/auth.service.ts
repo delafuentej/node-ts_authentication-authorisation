@@ -29,20 +29,27 @@ export class AuthService{
 
 
 
-            // to obtain the token- JWT & 
-            // maintaining user authentication
-
+    
             // send confirmation email when user is created
 
             //const userEntity = UserEntity.fromObject(user);
             const {password, ...restUserEntity} = UserEntity.fromObject(user)
+
+
+            // to obtain the token- JWT & 
+            // maintaining user authentication
+            const token = await Jwt.generateToken({ id: user.id })
+
+            if(!token) throw CustomError.internalServer('Error while creating JWT-Token');
+    
+           
            
            
 
 
             return {
                 user: restUserEntity,
-                token: 'ABC',
+                token: token,
             }
 
 
