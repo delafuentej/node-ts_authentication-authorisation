@@ -17,6 +17,7 @@ export class CategoryRoutes {
         
         // Defining the routes
         router.get('/', categoryController.getCategories );
+        //AuthMiddleware.validateJWT => confirmation that the user is who he/she claims to be
         router.post('/', [AuthMiddleware.validateJWT], categoryController.createCategory);
     
     
