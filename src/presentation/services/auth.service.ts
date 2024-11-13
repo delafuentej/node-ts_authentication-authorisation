@@ -1,4 +1,3 @@
-import { errorMonitor } from 'events';
 import { UserModel } from '../../data';
 import { CustomError, LoginUserDto, UserEntity } from '../../domain';
 import { RegisterUserDto } from '../../domain/dtos/auth/register-user.dto';

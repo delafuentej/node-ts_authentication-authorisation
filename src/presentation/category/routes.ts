@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { AuthMiddleware } from "../middlewares/auth.middleware";
 import { CategoryController } from "./controller";
+import { CategoryService } from "../services";
 
 
 
@@ -13,7 +14,8 @@ export class CategoryRoutes {
 
         const router = Router();
 
-        const categoryController = new CategoryController();
+        const categoryService= new CategoryService();
+        const categoryController = new CategoryController(categoryService);
         
         // Defining the routes
         router.get('/', categoryController.getCategories );
