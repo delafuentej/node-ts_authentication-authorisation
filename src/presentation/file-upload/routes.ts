@@ -11,7 +11,7 @@ export class FileUploadRoutes {
 
 
     static get routes(): Router {
-
+  
         const router = Router();
 
       // const fileUploadService = new FileUploadService();

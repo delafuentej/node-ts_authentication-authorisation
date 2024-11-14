@@ -5,9 +5,6 @@ import {  CustomError, PaginationDto } from '../../domain';
 import { UuidAdapter } from '../../config/uuid.adapter';
 
 
-
-
-
 export class FileUploadService {
     constructor(
         private readonly uuid = UuidAdapter.uuid,
@@ -46,17 +43,21 @@ export class FileUploadService {
           //  console.log({error});
             throw error;
         }
-        
+          
        
     }
    
 
-    uploadMultipleFiles(
-        file: UploadedFile[], 
+    async uploadMultipleFiles(
+        files: UploadedFile[], 
         folder: string ='uploads',
         validExtensions: string[] = ['png', 'jpg', 'jpeg', 'gif']
     ){
- 
+        const uploadFiles = await Promise.all(
+            files.map( file => this.uploadFile(file, folder, validExtensions))
+        );
+
+        return uploadFiles;
       
     }
 }
