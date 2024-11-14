@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { AuthRoutes } from './auth/routes';
 import { CategoryRoutes } from './category/routes';
 import { ProudctRoutes } from './product/routes';
+import { FileUploadRoutes } from './file-upload/routes';
 
 
 
@@ -18,7 +19,7 @@ export class AppRoutes {
      router.use('/api/auth', AuthRoutes.routes);
      router.use('/api/categories', CategoryRoutes.routes)
      router.use('/api/products', ProudctRoutes.routes )
-    
+      router.use('/api/upload', FileUploadRoutes.routes)
 
 
 
