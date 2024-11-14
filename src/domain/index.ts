@@ -11,3 +11,5 @@ export * from './errors/custom.error';
     export * from './dtos/category/create-category.dto';
     //-pagination:
     export * from './dtos/shared/pagination.dto';
+    //-product:
+    export * from './dtos/product/create-product.dto';

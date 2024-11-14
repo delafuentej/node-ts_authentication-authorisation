@@ -1,4 +1,5 @@
-import {  CustomError, PaginationDto} from "../../domain";
+import {  CustomError, PaginationDto, CreateProductDto} from "../../domain";
+import { ProductService } from "../services";
 import { Response, Request} from "express";
 
 
@@ -6,7 +7,7 @@ import { Response, Request} from "express";
 export class ProudctController {
 
     constructor(
-      //private readonly productService: ProductService;
+      private readonly productService: ProductService,
     ){};
 
     private handleError = (res: Response, error: unknown) => {
@@ -28,25 +29,31 @@ export class ProudctController {
         const [error, paginationDto] = PaginationDto.create(Number(page), Number(limit));
         if(error) return res.status(400).json({error});
 
-        res.json('getProducts');
+       // res.json('getProducts');
         //res.json(paginationDto)
-        // this.productService.getProducts(paginationDto!)
-        // .then( products => res.status(200).json(products)) 
-        // .catch( error => this.handleError(res, error))
+        this.productService.getProducts(paginationDto!)
+        .then( products => res.status(200).json(products)) 
+        .catch( error => this.handleError(res, error))
  
      
     }
 
     createProduct = (req: Request, res: Response) => {
-        res.json('Create Product')
-        // const [error, createProductDto] = CreateProductDto.create(req.body);
-        // if(error) return res.status(400).json({error});
+       // res.json('Create Product')
+        const userId= req.body.user.id;
+         const [error, createProductDto] = CreateProductDto.create({
+            ...req.body,
+            user: userId,
 
-        // const user= req.body.user;
+        });
+         if(error) return res.status(400).json({error});
 
-        // this.productService.createProduct(createProductDto!, user)
-        // .then( newProduct => res.status(201).json(newProduct))
-        // .catch( error => this.handleError(res, error))
+        // res.json(createProductDto)
+        
+
+        this.productService.createProduct(createProductDto!)
+        .then( newProduct => res.status(201).json(newProduct))
+        .catch( error => this.handleError(res, error))
        
     }
 
