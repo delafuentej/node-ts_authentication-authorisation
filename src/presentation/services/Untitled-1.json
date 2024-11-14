@@ -1,0 +1,111 @@
+{
+	"knownSymbols": {
+		"Router": [
+			{
+				"name": "Router",
+				"module": "express",
+				"isDefault": false
+			}
+		],
+		"Response": [
+			{
+				"name": "Response",
+				"module": "express",
+				"isDefault": false
+			}
+		],
+		"Request": [
+			{
+				"name": "Request",
+				"module": "express",
+				"isDefault": false
+			}
+		],
+		"AppRoutes": [
+			{
+				"name": "AppRoutes",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/presentation/routes.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"Validators": [
+			{
+				"name": "Validators",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/config/validators.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"mongoose": [
+			{
+				"name": "mongoose",
+				"module": "mongoose",
+				"isDefault": true
+			}
+		],
+		"CreateProductDto": [
+			{
+				"name": "CreateProductDto",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/domain/dtos/product/create-product.dto.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"ProudctRoutes": [
+			{
+				"name": "ProudctRoutes",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/presentation/product/routes.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"ProudctController": [
+			{
+				"name": "ProudctController",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/presentation/product/controller.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		],
+		"{ Schema": [
+			{
+				"name": "{ Schema",
+				"module": "mongoose",
+				"isDefault": true
+			}
+		],
+		"UserModel": [
+			{
+				"name": "UserModel",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/data/mongo/models/user.model.ts",
+				"type": "const",
+				"isDefault": false
+			}
+		],
+		"CategoryModel": [
+			{
+				"name": "CategoryModel",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/data/mongo/models/category.model.ts",
+				"type": "const",
+				"isDefault": false
+			}
+		],
+		"ProductModel": [
+			{
+				"name": "ProductModel",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/data/mongo/models/product.model.ts",
+				"type": "const",
+				"isDefault": false
+			}
+		],
+		"ProductService": [
+			{
+				"name": "ProductService",
+				"path": "/Users/jesusdelafuentedelucas/projects/node/node-ts-express-shell/src/presentation/services/product.service.ts",
+				"type": "class",
+				"isDefault": false
+			}
+		]
+	}
+}

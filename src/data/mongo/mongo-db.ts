@@ -22,4 +22,8 @@ export class MongoDB {
           
         }
     }
+
+    static async disconnect(){
+        await mongoose.disconnect();
+    }
 }
